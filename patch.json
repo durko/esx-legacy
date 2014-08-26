@@ -1,0 +1,500 @@
+{
+    "blob": {
+        "0.0.0": {
+            "Blob.js": [
+                {
+                    "type": "append",
+                    "parameters": "if (!window.Blob) window.Blob = Blob;\nexport default Blob;"
+                }
+            ]
+        }
+    },
+
+    "bootstrap": {
+        "3.2.0": {
+            "dist/js/bootstrap.js": [{ "type": "jquery-plugin" }]
+        }
+    },
+
+    "bootstrap-contextmenu": {
+        "0.0.0": {
+            "bootstrap-contextmenu.js": [{ "type": "jquery-plugin" }]
+        }
+    },
+
+    "bootstrap-datepicker": {
+        "0.0.0": {
+            "js/bootstrap-datepicker.js": [{ "type": "jquery-plugin" }]
+        }
+    },
+
+    "bootstrap3-typeahead": {
+        "0.0.0": {
+            "bootstrap3-typeahead.js": [{ "type": "jquery-plugin" }]
+        }
+    },
+
+    "d3": {
+        "3.4.1": {
+            "d3.js": [
+                {
+                    "type": "munge-ast",
+                    "parameters": [
+                        {
+                            "type": "assign",
+                            "left": "[0].expression.argument.callee.body.body[735]",
+                            "right": ""
+                        }
+                    ]
+                },
+                { "type": "export", "parameters": { "var": "d3" } }
+            ]
+        }
+    },
+
+    "d3-timeline": {
+        "0.0.0": {
+            "src/d3-timeline.js": [
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "import": [{ "var": "d3", "module": "vendor/d3" }],
+                        "export": [{ "var": "null", "name": "default" }]
+                    }
+                }
+            ]
+        }
+    },
+
+    "ember": {
+        "1.5.0": {
+            "ember.js": [
+                {
+                    "type": "prepend",
+                    "parameters": "var Ember = { imports: { Handlebars: Handlebars, jQuery: $ } };"
+                },
+                {
+                    "type": "replace",
+                    "parameters": {
+                        "regex": "var element = document.createElement\\('div'\\);",
+                        "replace": "var element = 'createElementNS' in document ? document.createElementNS(parentNode.namespaceURI, parentNode.tagName) : document.createElement(parentNode.tagName);"
+                    }
+                },
+                {
+                    "type": "replace",
+                    "parameters": {
+                        "regex": "attributeName = split\\[1\\] \\|\\| property;",
+                        "replace": "attributeName = split.slice(1).join(':') || property;"
+                    }
+                },
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "import": [
+                            { "var": "$", "module": "vendor/jquery" },
+                            { "var": "Handlebars", "module": "vendor/handlebars" }
+                        ],
+                        "export": [{ "var": "Ember", "name": "default" }]
+                    }
+                }
+            ]
+        },
+        "1.6.0": {
+            "ember.js": [
+                {
+                    "type": "munge-ast",
+                    "parameters": [
+                        {
+                            "type": "assign",
+                            "left": "[0]",
+                            "right": "(function() {}).call(this)",
+                            "rightReplace": [
+                                {
+                                    "left": "[0].expression.callee.object.body",
+                                    "right": "[0].expression.callee.body"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "prepend",
+                    "parameters": "window.Ember = { imports: { Handlebars: Handlebars, jQuery: $ } };"
+                },
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "import": [
+                            { "var": "$", "module": "vendor/jquery" },
+                            { "var": "Handlebars", "module": "vendor/handlebars" }
+                        ],
+                        "export": [{ "var": "Ember", "name": "default" }]
+                    }
+                }
+            ]
+        }
+    },
+
+    "ember-data": {
+        "0.0.0": {
+            "ember-data.js": [
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "import": [{ "var": "Ember", "module": "vendor/ember" }],
+                        "export": [{ "var": "DS", "name": "default" }]
+                    }
+                }
+            ]
+        }
+    },
+
+    "ember-renderspeed": {
+        "0.0.0": {
+            "ember-renderspeed.js": [
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "import": [{ "var": "Ember", "module": "vendor/ember" }],
+                        "export": [{ "var": "Ember", "name": "default" }]
+                    }
+                }
+            ]
+        }
+    },
+
+    "emblem": {
+        "0.0.0": {
+            "_add": ["dist/emblem.js"]
+        }
+    },
+
+    "eonasdan-bootstrap-datetimepicker": {
+        "0.0.0": {
+            "build/js/bootstrap-datetimepicker.min.js": [
+                {
+                    "type": "munge-ast",
+                    "parameters": [
+                        {
+                            "type": "assign",
+                            "left": "[0]",
+                            "right": "(function(){})($, moment)",
+                            "rightReplace": [
+                                {
+                                    "left": "[0].expression.callee",
+                                    "right": "[0].expression.arguments[0]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "import": [
+                            { "var": "$", "module": "vendor/jquery" },
+                            { "var": "moment", "module": "vendor/moment" }
+                        ],
+                        "export": [
+                            { "var": "null", "name": "default" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+
+    "fastclick": {
+        "0.0.0": {
+            "lib/fastclick.js": [
+                {
+                    "type": "munge-ast",
+                    "parameters": [
+                        {
+                            "type": "assign",
+                            "left": "[23]",
+                            "right": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "export": [
+                            { "var": "FastClick", "name": "default" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+
+    "FileSaver": {
+        "0.0.0": {
+            "FileSaver.js": [
+                {
+                    "type": "munge-ast",
+                    "parameters": [
+                        {
+                            "type": "assign",
+                            "left": "[1]",
+                            "right": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "export": [
+                            { "var": "saveAs", "name": "default" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+
+    "handlebars": {
+        "0.0.0": {
+            "handlebars.js": [
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "export": [
+                            { "var": "Handlebars", "name": "default" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+
+    "jquery": {
+        "1.9.0": {
+            "dist/jquery.js": [
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "export": [
+                            { "var": "$", "name": "default" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+
+    "leaflet": {
+        "0.0.0": {
+            "dist/leaflet.js": [
+                {
+                    "type": "munge-ast",
+                    "parameters": [
+                        {
+                            "type": "assign",
+                            "left": "[0].expression.argument.callee.body.body[1].expression.expressions[1]",
+                            "right": "null"
+                        }
+                    ]
+                },
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "export": [
+                            { "var": "L", "name": "default" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "marked": {
+        "0.0.0": {
+            "lib/marked.js": [
+                {
+                    "type": "munge-ast",
+                    "parameters": [
+                        {
+                            "type": "assign",
+                            "left": "[1].expression.callee.object.body.body[77]",
+                            "right": ""
+                        }
+                    ]
+                },
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "export": [
+                            { "var": "marked", "name": "default" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+
+    "moment": {
+        "0.0.0": {
+            "moment.js": [
+                {
+                    "type": "munge-ast",
+                    "parameters": [
+                        {
+                            "type": "assign",
+                            "left": "[0].expression.callee.object.body.body[112]",
+                            "right": "__export = moment;"
+                        },
+                        {
+                            "type": "assign",
+                            "left": "[0].expression.callee.object.body.body[113]",
+                            "right": ""
+                        },
+                        {
+                            "type": "unshift",
+                            "key": "",
+                            "value": "var __export;"
+                        }
+                    ]
+                },
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "export": [
+                            { "var": "__export", "name": "default" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+
+    "moment-timezone": {
+        "0.0.0": {
+            "moment-timezone.js": [
+                {
+                    "type": "munge-ast",
+                    "parameters": [
+                        {
+                            "type": "assign",
+                            "left": "[0]",
+                            "right": "(function(){})(moment)",
+                            "rightReplace": [
+                                {
+                                    "left": "[0].expression.callee",
+                                    "right": "[0].expression.arguments[1]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "import": [{ "var": "moment", "module": "vendor/moment" }],
+                        "export": [{ "var": "moment", "name": "default" }]
+                    }
+                }
+            ]
+        }
+    },
+
+    "nvd3": {
+        "0.0.0": {
+            "nv.d3.js": [
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "import": [{ "var": "d3", "module": "vendor/d3" }],
+                        "export": [{ "var": "window.nv", "name": "default" }]
+                    }
+                }
+            ]
+        }
+    },
+
+    "pdfjs-build": {
+        "0.0.0": {
+            "pdf.js": [
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "export": [{ "var": "PDFJS", "name": "default" }]
+                    }
+                }
+            ],
+            "_add": ["pdf.worker.js"]
+        }
+    },
+
+    "socket.io-client": {
+        "1.0.0": {
+            "socket.io.js": [
+                {
+                    "type": "munge-ast",
+                    "parameters": [
+                        {
+                            "type": "assign",
+                            "left": "[0]",
+                            "right": "var __exports = (function(){})()",
+                            "rightReplace": [
+                                {
+                                    "left": "[0].declarations[0].init.callee",
+                                    "right": "[0].expression.argument.arguments[0]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "export": [{ "var": "__exports", "name": "default" }]
+                    }
+                }
+            ]
+        }
+    },
+
+    "typeahead.js": {
+        "0.0.0": {
+            "dist/typeahead.bundle.js": [
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "import": [{ "var": "$", "module": "vendor/jquery" }],
+                        "export": [{ "var": "null", "name": "default" }]
+                    }
+                }
+            ]
+        }
+    },
+
+    "vis": {
+        "0.0.0": {
+            "dist/vis.js": [
+                {
+                    "type": "munge-ast",
+                    "parameters": [
+                        {
+                            "type": "assign",
+                            "left": "[0]",
+                            "right": "var __exports = (function(){})()",
+                            "rightReplace": [
+                                {
+                                    "left": "[0].declarations[0].init.callee",
+                                    "right": "[0].expression.arguments[1]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "es6-modules",
+                    "parameters": {
+                        "export": [{ "var": "__exports", "name": "default" }]
+                    }
+                }
+            ]
+        }
+    }
+}
