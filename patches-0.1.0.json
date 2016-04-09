@@ -1,0 +1,301 @@
+{
+    "accounting": {
+        "0.4.2": {
+
+        }
+    },
+
+    "bootstrap": {
+        "3.3.0": {
+            "files": {
+                "dist/js/bootstrap.es6.js": {
+                    "source": "dist/js/bootstrap.js",
+                    "ops": [{"type": "jqueryPlugin"}]
+                }
+            },
+            "profiles": {
+                "*": {
+                    "add": [
+                        "dist/css/bootstrap.css",
+                        "dist/fonts/glyphicons-halflings-regular.eot",
+                        "dist/fonts/glyphicons-halflings-regular.ttf",
+                        "dist/fonts/glyphicons-halflings-regular.woff2",
+                        "dist/fonts/glyphicons-halflings-regular.svg",
+                        "dist/fonts/glyphicons-halflings-regular.woff"
+                    ]
+                },
+                "development": {
+                    "add": [
+                        "dist/css/bootstrap.css.map"
+                    ]
+                }
+            }
+        }
+    },
+
+    "c3": {
+        "0.4.10": {
+            "files": {
+                "c3.es6.js": {
+                    "source": "c3.js",
+                    "ops": [
+                        {"type": "killLoader"},
+                        {"type": "extractFunction"},
+                        {
+                            "type": "wrap",
+                            "prepend": "import d3 from 'd3';",
+                            "append": "export default c3;"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+
+    "d3": {
+        "3.5.0": {
+            "files": {
+                "d3.es6.js": {
+                    "source": "d3.js",
+                    "ops": [
+                        {"type": "killLoader"},
+                        {"type": "wrap", "append": "export default d3;"}
+                    ]
+                }
+            }
+        }
+    },
+
+    "d3-timeline": {
+        "0.0.0": {
+            "files": {
+                "src/d3-timeline.es6.js": {
+                    "source": "src/d3-timeline.js",
+                    "ops": [
+                        {
+                            "type": "wrap",
+                            "prepend": "import d3 from 'd3';",
+                            "append": "export default d3.timeline;"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+
+    "ember": {
+        "1.13.0": {
+            "files": {
+                "ember.debug.es6.js": {
+                    "source": "ember.debug.js",
+                    "ops": [
+                        {
+                            "type": "wrap",
+                            "prepend": [
+                                "import $ from 'jquery';",
+                                "window.Ember = { imports: { jQuery: $ } };"
+                            ],
+                            "append": "export default Ember;"
+                        }
+                    ]
+                },
+                "ember.prod.es6.js": {
+                    "source": "ember.prod.js",
+                    "ops": [
+                        {
+                            "type": "wrap",
+                            "prepend": [
+                                "import $ from 'jquery';",
+                                "window.Ember = { imports: { jQuery: $ } };"
+                            ],
+                            "append": "export default Ember;"
+                        }
+                    ]
+                }
+            },
+            "profiles": {
+                "development": {
+                    "remove": [ "ember.prod.es6.js" ]
+                },
+                "production": {
+                    "remove": [ "ember.debug.es6.js" ]
+                }
+            }
+        }
+    },
+
+    "ember-data": {
+        "1.13.0": {
+            "files": {
+                "ember-data.es6.js": {
+                    "source": "ember-data.js",
+                    "ops": [
+                        { "type": "killLoader" },
+                        {
+                            "type": "wrap",
+                            "prepend": "import Ember from 'ember';",
+                            "append": "export default Ember.lookup.DS;"
+                        }
+                    ]
+                },
+                "ember-data.prod.es6.js": {
+                    "source": "ember-data.prod.js",
+                    "ops": [
+                        { "type": "killLoader" },
+                        {
+                            "type": "wrap",
+                            "prepend": "import Ember from 'ember';",
+                            "append": "export default Ember.lookup.DS;"
+                        }
+                    ]
+                }
+            },
+            "profiles": {
+                "development": {
+                    "remove": [ "ember-data.prod.es6.js" ]
+                },
+                "production": {
+                    "remove": [ "ember-data.es6.js" ]
+                }
+            }
+        }
+    },
+
+    "eonasdan-bootstrap-datetimepicker": {
+        "4.17.37": {
+            "files": {
+                "build/js/bootstrap-datetimepicker.min.es6.js": {
+                    "source": "build/js/bootstrap-datetimepicker.min.js",
+                    "ops": [
+                        {"type": "umd"},
+                        {
+                            "type": "wrap",
+                            "prepend": "import a from 'jquery';\nimport b from 'moment';"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+
+    "jquery": {
+        "1.9.0": {
+            "files": {
+                "dist/jquery.es6.js": {
+                    "source": "dist/jquery.js",
+                    "ops": [
+                        {"type": "wrap", "append": "export default $;"}
+                    ]
+                }
+            }
+        },
+        "2.0.0": {
+            "files": {
+                "dist/jquery.es6.js": {
+                    "source": "dist/jquery.js",
+                    "ops": [
+                        {"type": "killLoader"},
+                        {"type": "umd"}
+                    ]
+                }
+            }
+        }
+    },
+
+    "leaflet": {
+        "0.7.7": {
+            "files": {
+                "dist/leaflet.es6.js": {
+                    "source": "dist/leaflet-src.js",
+                    "ops": [
+                        {"type": "extractFunction"},
+                        {"type": "wrap", "append": "export default L;"}
+                    ]
+                }
+            }
+        }
+    },
+
+    "marked": {
+        "0.3.5": {
+            "files": {
+                "lib/marked.es6.js": {
+                    "source": "lib/marked.js",
+                    "ops": [
+                        {"type": "killLoader"},
+                        {"type": "extractFunction"},
+                        {"type": "wrap", "append": "export default marked;"}
+                    ]
+                }
+            }
+        }
+    },
+
+    "moment": {
+        "2.10.0": {
+            "files": {
+                "moment.es6.js": {
+                    "source": "moment.js",
+                    "ops": [{"type": "umd"}]
+                }
+            }
+        }
+    },
+
+    "moment-timezone": {
+        "0.4.0": {
+            "files": {
+                "moment-timezone.es6.js": {
+                    "source": "moment-timezone.js",
+                    "ops": [
+                        {"type": "umd"},
+                        {"type": "wrap", "prepend": "import moment from 'moment';"}
+                    ]
+                }
+
+            }
+        }
+    },
+
+    "socket.io-client": {
+        "1.0.0": {
+            "files": {
+                "socket.io.es6.js": {
+                    "source": "socket.io.js",
+                    "ops": [{"type": "umd"}]
+                }
+            }
+        }
+    },
+
+    "three.js": {
+        "0.72.0": {
+            "files": {
+                "three.min.es6.js": {
+                    "source": "three.min.js",
+                    "ops": [
+                        {"type": "killLoader"},
+                        {"type": "wrap", "append": "export default THREE;"}
+                    ]
+                }
+            }
+        }
+    },
+
+    "twix": {
+        "0.7.2": {
+
+        }
+    },
+
+    "velocity": {
+        "1.2.3": {
+            "files": {
+                "velocity.es6.js": {
+                    "source": "velocity.js",
+                    "ops": [{"type": "jqueryPlugin"}]
+                }
+            }
+        }
+    }
+}
