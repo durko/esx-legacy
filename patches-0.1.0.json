@@ -52,6 +52,24 @@
         }
     },
 
+    "crossfilter2": {
+        "1.3.13": {
+            "files": {
+                "crossfilter.es6.js": {
+                    "source": "crossfilter.js",
+                    "ops": [
+                        {"type": "extractFunction"},
+                        {"type": "replace", "regex": "exports.crossfilter = crossfilter;", "replace": ""},
+                        {
+                            "type": "wrap",
+                            "append": "export default crossfilter;"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+
     "d3": {
         "3.5.0": {
             "files": {
@@ -60,6 +78,19 @@
                     "ops": [
                         {"type": "killLoader"},
                         {"type": "wrap", "append": "export default d3;"}
+                    ]
+                }
+            }
+        },
+        "3.5.17": {
+            "files": {
+                "d3.es6.js": {
+                    "source": "d3.js",
+                    "ops": [
+                        {"type": "extractFunction"},
+                        {"type": "killLoader"},
+                        {"type": "replace", "regex": "^}();", "replace": "return d3;}();"},
+                        {"type": "wrap", "prepend" : "var d3 = function(){", "append": "return d3;}(); export default d3;"}
                     ]
                 }
             }
@@ -76,6 +107,25 @@
                             "type": "wrap",
                             "prepend": "import d3 from 'd3';",
                             "append": "export default d3.timeline;"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+
+    "dc.js": {
+        "0.0.0": {
+            "files": {
+                "dc.es6.js": {
+                    "source": "dc.js",
+                    "ops": [
+                        {"type": "extractFunction"},
+                        {"type": "killLoader"},
+                        {
+                            "type": "wrap",
+                            "prepend": "import d3 from 'd3';\nimport crossfilter from 'crossfilter2'",
+                            "append": "export default _dc(d3, crossfilter);"
                         }
                     ]
                 }
@@ -264,6 +314,21 @@
                     ]
                 }
 
+            }
+        }
+    },
+
+    "mpld3": {
+        "0.0.0": {
+            "files": {
+                "mpld3.v0.3.es6.js": {
+                    "source": "mpld3/js/mpld3.v0.3.js",
+                    "ops": [
+                        {"type": "killLoader"},
+                        {"type": "extractFunction"},
+                        {"type": "wrap", "prepend": "import d3 from 'd3';", "append": "export default mpld3;"}
+                    ]
+                }
             }
         }
     },
