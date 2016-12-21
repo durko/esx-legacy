@@ -355,6 +355,24 @@
                     ]
                 }
             }
+        },
+        "0.0.0": {
+            "files": {
+                "trackball-controls.js": {
+                    "source": "examples/js/controls/TrackballControls.js",
+                    "ops": [
+                        {"type": "wrap", "prepend": "import THREE from './three.es6.js';", "append": "export default THREE.TrackballControls;"}
+                    ]
+                },
+                "three.es6.js": {
+                    "source": "build/three.js",
+                    "ops": [
+                        {"type": "replace", "regex": "function \\(exports\\) { 'use strict'", "replace": "function() { 'use strict'; var exports = {}"},
+                        {"type": "replace", "regex": "\n}\\)\\)\\);", "replace": "\nreturn exports;})));"},
+                        {"type": "umd"}
+                    ]
+                }
+            }
         }
     },
 
